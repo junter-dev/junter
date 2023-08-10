@@ -23,4 +23,4 @@ release.node:
 	@cp package.json ./build/node
 	@cd ./build/node
 
-	@npm publish --tag $(NPM_TAG)
+	@npm publish --tag $(NPM_TAG) --access=public
