@@ -1,0 +1,38 @@
+{
+    "parser": "babel-eslint",
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.spec.js",
+                "**/*.spec.jsx"
+            ],
+            "env": {
+                "jest": true
+            }
+        }
+    ],
+    "rules": {
+        "no-use-before-define": ["error", { "variables": false }],
+        "no-param-reassign": "off",
+        "import/prefer-default-export": "off",
+        "semi": "off",
+        "linebreak-style": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "import/no-extraneous-dependencies": "off"
+    }
+}
