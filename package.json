@@ -1,6 +1,6 @@
 {
   "name": "@junter.dev/junter",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Junter is designed to quickly convert JSON to HTML. Supports powerful functionality for the required conversion.",
   "main": "index.js",
   "module": "module",
