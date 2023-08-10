@@ -48,6 +48,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: "install dependencies"
+        shell: bash
+        run: |
+          npm install --legacy-peer-deps
+          npm install -E -g rollup
+
       - name: "build for web"
         shell: bash
         run: rollup -c --environment BUILD:node
@@ -56,5 +62,7 @@ jobs:
         shell: bash
         run: |
           git config --global --add safe.directory /__w/junter/junter
+          
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}"
           
           make release.node VERSION=$(git describe --tags --abbrev=0) NPM_TAG=latest
