@@ -15,7 +15,7 @@ jobs:
           
           ./node_modules/.bin/eslint --fix 'src/**/*.ts'
 
-  build_dev_image:
+  build_dev_node:
     runs-on: ubuntu-22.04
     if: ${{ github.event_name == 'pull_request' }}
     container: node:20
@@ -28,9 +28,15 @@ jobs:
           npm install --legacy-peer-deps
           npm install -E -g rollup
 
-      - name: "build for web"
+      - name: "build for node"
         shell: bash
         run: rollup -c --environment BUILD:node
+
+      - name: "install jq"
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install jq
 
       - name: "Publish to npm"
         shell: bash
@@ -41,7 +47,39 @@ jobs:
           
           make release.node VERSION="0.0.1-$(git rev-parse --short ${{ github.event.pull_request.head.sha }})"
 
-  build_release:
+  build_dev_browser:
+    runs-on: ubuntu-22.04
+    if: ${{ github.event_name == 'pull_request' }}
+    container: node:20
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "install dependencies"
+        shell: bash
+        run: |
+          npm install --legacy-peer-deps
+          npm install -E -g rollup
+
+      - name: "build for node"
+        shell: bash
+        run: rollup -c --environment BUILD:browser
+
+      - name: "install jq"
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install jq
+
+      - name: "Publish to npm"
+        shell: bash
+        run: |
+          git config --global --add safe.directory /__w/junter/junter
+          
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}"
+          
+          make release.browser VERSION="0.0.1-$(git rev-parse --short ${{ github.event.pull_request.head.sha }})"
+
+  build_release_node:
     runs-on: ubuntu-22.04
     if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags/') }}
     container: node:20
@@ -54,11 +92,17 @@ jobs:
           npm install --legacy-peer-deps
           npm install -E -g rollup
 
-      - name: "build for web"
+      - name: "build for node"
         shell: bash
         run: rollup -c --environment BUILD:node
 
-      - name: "Publish to npm"
+      - name: "install jq"
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install jq
+
+      - name: "Publish node version to npm"
         shell: bash
         run: |
           git config --global --add safe.directory /__w/junter/junter
@@ -66,3 +110,35 @@ jobs:
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}"
           
           make release.node VERSION=$(git describe --tags --abbrev=0) NPM_TAG=latest
+
+  build_release_browser:
+    runs-on: ubuntu-22.04
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags/') }}
+    container: node:20
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "install dependencies"
+        shell: bash
+        run: |
+          npm install --legacy-peer-deps
+          npm install -E -g rollup
+
+      - name: "build for browser"
+        shell: bash
+        run: rollup -c --environment BUILD:browser
+
+      - name: "install jq"
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install jq
+
+      - name: "Publish browser version to npm"
+        shell: bash
+        run: |
+          git config --global --add safe.directory /__w/junter/junter
+          
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}"
+          
+          make release.browser VERSION=$(git describe --tags --abbrev=0) NPM_TAG=latest
