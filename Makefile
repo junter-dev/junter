@@ -19,8 +19,11 @@ export NPM_TAG?="dev"
 #@ RELEASE
 .PHONY: release.node
 release.node:
-	@cp package.json ./build/node
 	@npm version $(VERSION) --no-git-tag-version
+	@cp package.json ./build/node
 
-	@npm pack ./build/node
-	@npm publish --tag $(NPM_TAG) --access=public ./build/node/*.tgz
+	@cd ./build/node && \
+     		npm pack &&  \
+    		npm --prefix ./build/node/ publish \
+    			--tag $(NPM_TAG) \
+    			--access=public *.tgz
