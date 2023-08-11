@@ -35,7 +35,7 @@ release.browser: build.browser
 
 	@cat package.json | jq '.name="@junter.dev/junter-browser" | del(.scripts, .devDependencies, .dependencies)' >./build/browser/package.json
 
-	@cd ./build/node && \
+	@cd ./build/browser && \
          	npm pack &&  \
         	npm --prefix ./build/browser/ publish \
         		--tag $(NPM_TAG) \
