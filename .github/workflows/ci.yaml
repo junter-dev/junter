@@ -100,7 +100,7 @@ jobs:
         shell: bash
         run: |
           apt-get update
-          apt-get install jq
+          apt-get -y install jq
 
       - name: "Publish node version to npm"
         shell: bash
@@ -132,7 +132,7 @@ jobs:
         shell: bash
         run: |
           apt-get update
-          apt-get install jq
+          apt-get -y install jq
 
       - name: "Publish browser version to npm"
         shell: bash
