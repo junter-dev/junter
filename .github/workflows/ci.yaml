@@ -16,6 +16,7 @@ jobs:
           ./node_modules/.bin/eslint --fix 'src/**/*.ts'
 
   trivy:
+    permissions: write-all
     runs-on: ubuntu-22.04
     if: ${{ github.event_name == 'pull_request' || github.ref == 'refs/heads/main' }}
     steps:
