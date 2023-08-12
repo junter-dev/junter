@@ -2,18 +2,18 @@ name: Run CI
 on: [push, pull_request]
 
 jobs:
-  linter:
+  tests:
     runs-on: ubuntu-22.04
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' || github.ref == 'refs/heads/main' }}
     container: node:20
     steps:
       - uses: actions/checkout@v3
-      - name: Run ESLint
+      - name: Run Jest
         shell: bash
         run: |
           npm install
           
-          ./node_modules/.bin/eslint --fix 'src/**/*.ts'
+          ./node_modules/.bin/jest --env=jsdom
 
   trivy:
     permissions: write-all

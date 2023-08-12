@@ -8,11 +8,6 @@ build.node:
 build.browser:
 	rollup -c --environment BUILD:browser
 
-#@ CODE QUALITY
-.PHONY: lint.js
-lint.js:
-	@eslint --fix 'src/**/*.ts'
-
 export VERSION?="v1.0.0"
 export NPM_TAG?="dev"
 

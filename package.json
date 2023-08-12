@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "module",
   "scripts": {
-    "test": "jest --watchAll --env=jsdom",
+    "test": "jest --env=jsdom",
     "build-web": "make build.web",
     "build-node": "make build.node"
   },
