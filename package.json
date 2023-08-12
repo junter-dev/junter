@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "module",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --env=jsdom",
     "build-web": "make build.web",
     "build-node": "make build.node"
   },
@@ -29,7 +29,7 @@
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-typescript": "^11.1.2",
-    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/jest-dom": "5.17.0",
     "@types/babel__core": "7.20.1",
     "@types/jest": "29.5.3",
     "@types/jsdom": "21.1.1",

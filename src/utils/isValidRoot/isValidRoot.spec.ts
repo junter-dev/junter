@@ -1,4 +1,4 @@
-import { isValidRoot } from '../isValidRoot'
+import { isValidRoot } from './index'
 
 describe('isValidRoot Func', () => {
   test('it should return true if argument is an object (not array) and contains only one element', () => {
