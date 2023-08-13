@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/junter-dev/junter.git"
   },
-  "keywords": [],
+  "keywords": ["ts", "typescript", "node", "browser", "json", "jsontohtml","json2html", "js", "javascript", "ssr", "components", "slots", "aliases", "localization"],
   "author": "eastern.researchers",
   "license": "MIT",
   "bugs": {

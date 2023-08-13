@@ -16,6 +16,8 @@ export NPM_TAG?="dev"
 release.node:
 	@npm version $(VERSION) --no-git-tag-version
 
+	@cp LICENSE README.md ./build/node/
+
 	@cat package.json | jq '.name="@junter.dev/junter-node" | del(.scripts, .devDependencies)' >./build/node/package.json
 
 	@cd ./build/node && \
@@ -27,6 +29,8 @@ release.node:
 .PHONY: release.browser
 release.browser: build.browser
 	@npm version $(VERSION) --no-git-tag-version
+
+	@cp LICENSE README.md ./build/browser/
 
 	@cat package.json | jq '.name="@junter.dev/junter-browser" | del(.scripts, .devDependencies, .dependencies)' >./build/browser/package.json
 
