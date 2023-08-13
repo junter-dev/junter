@@ -717,7 +717,7 @@ component behind a simple name that we can reuse as often as needed.
   The Proto Contract for Junter's render service can be accessed and reviewed directly on our GitHub repository.
   This contract delineates the service methods, message formats, and the expected interaction patterns.
 
-  Proto Contract for [Junter Render Service](https://github.com/junter-dev/render-service/blob/main/api/render/v1/render_service.proto)
+  Proto Contract for [Junter Render Service](https://github.com/junter-dev/junter-render-service/blob/main/api/render/v1/render_service.proto)
 
   ### Highlights
   * Service Definitions: Gain an understanding of available RPC methods and their specifications.
