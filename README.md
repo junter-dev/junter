@@ -168,7 +168,7 @@ several key areas.
   For browser:
   
   ```js
-    const junter = new Junter();
+    const junter = new Junter.Junter();
   ```
   
   For Node.JS:
