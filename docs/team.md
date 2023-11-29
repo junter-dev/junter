@@ -1,4 +1,5 @@
-### Amirali Kerimovs (Creator & Founder) - An experienced software engineer currently holds the position of Chief Product Officer at Baches.io Corporation (USA).
+### Amirali Kerimovs (Creator & Founder)
+An experienced software engineer currently holds the position of Chief Product Officer at Baches.io Corporation (USA).
 His notable accomplishments encompass defining product vision, managing and overseeing product releases, directing feature roll-outs, coordinating cross-functional teams, and establishing critical international partnerships and integrations.
 Amir also founded his startup, FindBelay Inc., specializing in advanced research and in-depth studies within the insurance and fintech sectors.
 Amir's software engineering background is considerable, having worked with Pearl Nord Group and Fintel Technologies.
